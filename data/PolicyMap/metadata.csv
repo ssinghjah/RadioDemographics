@@ -1,0 +1,11 @@
+"column_name","full_label","length","data_type","decimal_places","source"
+"GeoID_Description","description of geography type",24,"string",,
+"GeoID_Name","name of geography",225,"string",,
+"SitsinState","state in which geography sits",2,"string",,
+"GeoID","identifier",24,"string",,
+"GeoID_Formatted","formatted identifier",24,"string",,
+"rpopden","Estimated number of people per square mile, between 2019-2023.",9,"decimal",2,"Census",
+"TimeFrame","year",6,"date",,
+"GeoVintage","boundary vintage to which data is mapped",6,"date",,
+"Source","data source",130,"string",,
+"Location","predefined location or custom region",225,"string",,
