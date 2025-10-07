@@ -18,6 +18,15 @@ DIST_THRESH = 0.1 # in km
 OPEN_CELL_ID_LAT_COL = 7 
 OPEN_CELL_ID_LON_COL = 6
 
+
+SOURCE_FILE_PATHs = ["/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/region_0_populations.csv", "/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/region_1_populations.csv"]
+OUTPUT_FOLDER = "/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/"
+DEMOGRAPHICS_COL = "population"
+RADIO_COL = "rsrp"
+LOCATION_COL = "census_tract_geoid"
+DIST_THRESH = 0.1 # in km
+
+
 def calculate_num_handovers(cell_rows):
     num_handovers = 0
     cell_connection_durations = []
@@ -45,7 +54,7 @@ def calculate_seg_population_density(seg_pop_density_info, total_distance):
         pop_density += population_density*distance_fraction
     return pop_density
 
-# Format of point is (lat, lon, alt)
+
 def calculate_distance(point_1, point_2):
     ecef1 = lla_to_ecef(point_1)
     ecef2 = lla_to_ecef(point_2)
@@ -165,6 +174,7 @@ def calculate_distance_to_cell_towers(cell_rows, opencellid_data):
     return num_rows_with_ci, num_rows_match, num_matches, len(unique_cis), missing_cis, attached_rows
 
        
+
 def calculate_num_handovers_per_dist(cell_rows):
     curr_dist_counter = 0
     num_handovers_segment = 0
@@ -172,6 +182,8 @@ def calculate_num_handovers_per_dist(cell_rows):
     dist_seg_info = []
     num_rows = len(cell_rows)
     cell_rows = cell_rows[cell_rows["is_connected"] == 1]
+
+
     for i in range(num_rows-1):
         row = cell_rows.iloc[i]
         next_row = cell_rows.iloc[i+1]
@@ -182,12 +194,12 @@ def calculate_num_handovers_per_dist(cell_rows):
         
         if row[LOCATION_COL] not in population_density_seg:
                 population_density_seg[row[LOCATION_COL]] = {"distance":  0, "pop_density": row["population_density"]}
-
         if row[LOCATION_COL] == next_row[LOCATION_COL]:
             population_density_seg[row[LOCATION_COL]]["distance"] += dist_increase
         else:
             if next_row[LOCATION_COL] not in population_density_seg:
                 population_density_seg[next_row[LOCATION_COL]] = {"distance":  0, "pop_density": next_row["population_density"]}
+                population_density_seg[next_row[LOCATION_COL]] = {"distance":  0, "pop_density": next_row["population"]}
             population_density_seg[next_row[LOCATION_COL]]["distance"] += 0.5*dist_increase
             population_density_seg[row[LOCATION_COL]]["distance"] += 0.5*dist_increase
 
@@ -200,6 +212,7 @@ def calculate_num_handovers_per_dist(cell_rows):
             curr_dist_counter = 0
 
     return dist_seg_info
+
 
 # KPI Analysis
 merged_pd = []
@@ -242,57 +255,14 @@ pd.DataFrame(merged_pd).to_csv(os.path.join(OUTPUT_FOLDER, "handover_dist_all.cs
 radio_kpis_all.to_csv(os.path.join(OUTPUT_FOLDER, "radio_kpis_all.csv"), index=False)
 pd.DataFrame(missing_cis_all).to_csv(os.path.join(OUTPUT_FOLDER, "missing_location_cis.csv"), index=False)
 pd.DataFrame(cell_dist_attached_rows).to_csv(os.path.join(OUTPUT_FOLDER, "cell_tower_distances.csv"), index=False)
+
+
 # KPI Analysis
-# demo_kpis = []
-# mean_radios = []
-# num_handovers = []
-# cell_connection_durations = []
-# cell_connection_durations_mean = []
-
-# for source_file_path in SOURCE_FILE_PATHs:
-#     source_df = pd.read_csv(source_file_path)
-#     unique_tracts = source_df[LOCATION_COL].unique()
-
-#     for tract in unique_tracts:
-#         rows = source_df[source_df[LOCATION_COL] == tract]
-#         mean_radio_kpi = sum(rows[RADIO_COL])/len(rows[RADIO_COL])
-#         demo_kpi = rows.iloc[0][DEMOGRAPHICS_COL]
-#         print(mean_radio_kpi)
-#         print(demo_kpi)
-#         demo_kpis.append(demo_kpi)
-#         mean_radios.append(mean_radio_kpi)
-#         num_handover, cell_connection_duration = calculate_num_handovers(rows)
-#         cell_connection_durations.append(cell_connection_duration)
-#         num_handovers.append(num_handover)
-#         cell_connection_durations_mean.append(sum(cell_connection_duration)/ (len(cell_connection_durations)*1000.0))
-
-# print(mean_radios)
-# print(demo_kpis)
-
-
-
-# plt.rcParams.update({'font.size': 28}) # Set font size to 20
-
-
-# plt.scatter(demo_kpis, mean_radios)
-# plt.xlabel("Estimated number of people per square mile, between 2019-2023.")
-# plt.ylabel("RSRP (dBm)")
-# plt.grid()
-
-# plt.figure()
-# plt.scatter(demo_kpis, num_handovers)
-# plt.xlabel("Estimated number of people per square mile, between 2019-2023.")
-# plt.ylabel("Num handovers")
-# plt.grid()
-
-# plt.figure()
-# plt.scatter(demo_kpis, cell_connection_durations_mean)
-# plt.xlabel("Estimated number of people per square mile, between 2019-2023.")
-# plt.ylabel("Mean cell connection duration (seconds)")
-# plt.grid()
-# plt.show()
-
-
+for source_file_path in SOURCE_FILE_PATHs:
+    source_df = pd.read_csv(source_file_path)
+    handovers_per_dist = calculate_num_handovers_per_dist(source_df)
+    output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file_path)[0] + "_handovers_per_dist_" + str(DIST_THRESH) + "_km" + ".csv")
+    pd.DataFrame(handovers_per_dist).to_csv(output_path, index=False)
 
 
 

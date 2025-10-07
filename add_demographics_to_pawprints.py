@@ -33,6 +33,11 @@ parser = argparse.ArgumentParser(description = "Adds county, census tract, and c
 
 PAWPRINTS_ROOT_FOLDER = "/home/ubuntu/pawprints-processing/data/split_interpolated/"
 PAWPRINTS_OUTPUT_FOLDER = "~/pawprints-processing/data/split_geoids/"
+
+parser = argparse.ArgumentParser(description = "Adds county, census tract, and census block geo ids to each log row, using which latest demographic info are added from US census database.")
+
+PAWPRINTS_ROOT_FOLDER = "/home/ubuntu/RadioDemographics/data/split/"
+PAWPRINTS_OUTPUT_FOLDER = "~/RadioDemographics/data/split_geoids/"
 SLEEP = 0.2
 
 def process_file(input_path, output_path):
@@ -164,3 +169,17 @@ print("Total segments = " + str(len(os.listdir(INPUT_FOLDER))))
 print("Total rows = " + str(total_rows))
 print("Rows processed = ", total_processed, ", not processed = ", total_skipped)
 print("Missing FIPS: " + str(MISSING_FIPS))
+
+START = 1
+END = 79
+OFFSET = 4
+PREFIX = "aerpaw-1_cellular_interpolated_seg_"
+current_seg = START
+while current_seg <= END:
+    print("Segment:" + str(current_seg))
+    input_file_path = os.path.join(PAWPRINTS_ROOT_FOLDER, PREFIX + str(current_seg) + ".csv")
+    output_path = os.path.join(PAWPRINTS_OUTPUT_FOLDER, PREFIX + str(current_seg) + "_geoids.csv")
+    process_file(input_file_path, output_path)
+    current_seg += OFFSET
+
+
