@@ -1,2 +1,0 @@
-start_gps,end_gps,start_census_tract_id,association_length,end_census_tract_id,population_density,rucc,associated_pci
-"(np.float64(32.9795048), np.float64(-96.295209), np.float64(139.358046451418))","(np.float64(32.98097826729821), np.float64(-96.27948514234538), np.float64(150.60466865996116))",48231961401,2.627708808139974,48231961401,267.92,1,268
