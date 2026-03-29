@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fgdc_classic.xsl"?>
+<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://water.usgs.gov/GIS/metadata/usgswrd/fgdc-std-001-1998.xsd">
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Fenneman, N.M., and Johnson, D.W.</origin>
+        <pubdate>19460101</pubdate>
+        <title>Physiographic divisions of the conterminous U. S.</title>
+        <geoform>map</geoform>
+        <pubinfo>
+          <pubplace>Reston, VA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P9B1S3K8</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This is a polygon coverage of Physiographic Divisions in the
+conterminous United States. It was automated from Fenneman's
+1:7,000,000-scale map, "Physical Divisions of the United
+States," which is based on eight major 1946 divisions, 25 provinces,
+and 86 sections representing distinctive areas having common
+topography, rock types and structure, and geologic and
+geomorphic history.</abstract>
+      <purpose>The primary use of this data is for regional and national
+data display rather than specific local data analysis due to the
+small scale (1:7,000,000) of this coverage.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>19460101</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>Publication date of source material.</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-127.86962666</westbc>
+        <eastbc>-65.35777487</eastbc>
+        <northbc>48.2443923</northbc>
+        <southbc>22.9042508</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>USGS Thesaurus</themekt>
+        <themekey>Physiography</themekey>
+        <themekey>inlandWaters</themekey>
+        <themekey>Physiographic Divisions</themekey>
+        <themekey>Physiographic Provinces</themekey>
+        <themekey>Physiographic Sections</themekey>
+        <themekey>inlandWaters</themekey>
+      </theme>
+      <theme>
+        <themekt>ISO 19115 Topic Category</themekt>
+        <themekey>geoscientificInformation</themekey>
+        <themekey>inlandWaters</themekey>
+        <themekey>environment</themekey>
+      </theme>
+      <place>
+        <placekt>Geographic Names Information System</placekt>
+        <placekey>Conterminous United States</placekey>
+      </place>
+      <stratum>
+        <stratkt>None</stratkt>
+        <stratkey>None</stratkey>
+      </stratum>
+      <temporal>
+        <tempkt>None</tempkt>
+        <tempkey>None</tempkey>
+      </temporal>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:e04ea9e9-17b6-45ae-b279-7bc35ea79539</themekey>
+      </theme>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>The scale of the data (1:7,000,000) limits its use to broad overviews
+of physiographic divisions.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey</cntorg>
+          <cntper>Earth System Processes Division</cntper>
+        </cntorgp>
+        <cntemail>gs-w-model-data-management@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <browse>
+      <browsen>https://www.sciencebase.gov/catalog/file/get/631405bbd34e36012efa304e?name=physio.gif</browsen>
+      <browsed>Illlustration of data set</browsed>
+      <browset>GIF</browset>
+    </browse>
+    <datacred>U.S Geological Survey)</datacred>
+    <secinfo>
+      <secsys>None</secsys>
+      <secclass>UNCLASSIFIED</secclass>
+      <sechandl>None</sechandl>
+    </secinfo>
+    <native>Windows 2000, ARC 8.1 Service Pack 1</native>
+    <crossref>
+      <citeinfo>
+        <origin>Fenneman, Nevin M., and Johnson, Douglas W.</origin>
+        <pubdate>1946</pubdate>
+        <title>Physical divisions of the United States</title>
+        <geoform>Map</geoform>
+        <serinfo>
+          <sername>USGS special map</sername>
+          <issue>USGS special map</issue>
+        </serinfo>
+        <pubinfo>
+          <pubplace>Washington, DC</pubplace>
+          <publish>USGS</publish>
+        </pubinfo>
+      </citeinfo>
+    </crossref>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>Polygon topology present.</attraccr>
+    </attracc>
+    <logic>Polygon and chain-node topology present.</logic>
+    <complete>None</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>None.</horizpar>
+        <qhorizpa>
+          <horizpav>3556 meters</horizpav>
+          <horizpae>Resolution as reported</horizpae>
+        </qhorizpa>
+      </horizpa>
+      <vertacc>
+        <vertaccr>None</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <procstep>
+        <procdesc>This coverage was automated from Fenneman's 1:7,000,000-scale
+map, "Physical Divisions of the United States," 1946. Features
+were digitized from a stable mylar base into the United States
+boundary coverage.  Since the map is in polyconic projection,
+and the U.S. boundary coverage was in Albers Equal Area
+Projection, the U.S. boundary coverage was first projected
+into polyconic projection before digitizing.
+
+Once digitizing was complete, the coverage was projected back
+into Albers Equal Area Projection, with the following
+parameters:
+
+First parallel                    29 30 00 N
+Second parallel                   45 30 00 N
+Central meridian                 -96 00 00 W
+Latitude of projection origin     23 00 00 N
+False easting                            0.0
+False northing                           0.0
+
+Fennemans map is missing three boundaries separating:
+
+1. 5a/5b (which separates the Northern and Southern sections
+of Blue Ridge)
+
+2. 6a/6b (which separates Tennessee and Middle sections of
+Ridge and Valley)
+
+3. 24b/24c (which separates Olympic Mountains and Oregon Coast
+Range of the Pacific Border province)
+
+These boundaries were researched, then merged into the
+coverage.</procdesc>
+        <procdate>198812</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>Added attributes DIVISION, PROVINCE and SECTION to the
+polygon attribute table.</procdesc>
+        <procdate>19920113</procdate>
+      </procstep>
+      <procstep>
+        <procdesc>A user reported that section 23c, Southern Cascade Mountain
+Section was missing.  Added boundary between Middle Cascade
+Mountain section (23b) and Southern Cascade Mountain Section
+(23c).  Added label for Southern Cascade Mountain Section.
+Added annotation for 23c, Southern Cascade Mountain Section.</procdesc>
+        <procdate>20020103</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Vector</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>Point</sdtstype>
+        <ptvctcnt>501</ptvctcnt>
+      </sdtsterm>
+      <sdtsterm>
+        <sdtstype>String</sdtstype>
+        <ptvctcnt>803</ptvctcnt>
+      </sdtsterm>
+      <sdtsterm>
+        <sdtstype>GT-polygon composed of chains</sdtstype>
+        <ptvctcnt>502</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>ALBERS conical equal area</mapprojn>
+          <albers>
+            <stdparll>29.5</stdparll>
+            <stdparll>45.5</stdparll>
+            <longcm>-96</longcm>
+            <latprjo>23</latprjo>
+            <feast>0.00000</feast>
+            <fnorth>0.00000</fnorth>
+          </albers>
+        </mapproj>
+        <planci>
+          <plance>coordinate pair</plance>
+          <coordrep>
+            <absres>1.0</absres>
+            <ordres>1.0</ordres>
+          </coordrep>
+          <plandu>METERS</plandu>
+        </planci>
+      </planar>
+      <geodetic>
+        <horizdn>North American Datum of 1983</horizdn>
+        <ellips>GRS1980</ellips>
+        <semiaxis>6378206.4</semiaxis>
+        <denflat>294.98</denflat>
+      </geodetic>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <overview>
+      <eaover>DATAFILE NAME: PHYSIO.PAT
+9 ITEMS: STARTING IN POSITION    1
+COL  ITEM NAME         WDTH OPUT TYP N.DEC  ALTERNATE NAME
+  1  AREA                4   12  F    3
+  5  PERIMETER           4   12  F    3
+  9  PHYSIO#             4    4  B    -
+ 13  PHYSIO-ID           4    5  B    -
+ 17  FCODE               3    5  I    -
+ 20  FENCODE             4    5  C    -
+ 24  DIVISION           23   23  C    -
+ 47  PROVINCE           24   24  C    -
+ 71  SECTION            29   29  C    -
+100  PROVCODE            3    3  I    -
+
+FCODE -    Numeric code for physiographic section.  Values 1-243.
+
+FENCODE -  Fenneman's code (number+alpha) for physiographic section
+
+DIVISION - Name of major physiographic division
+
+PROVINCE - Name of physiographic province
+
+SECTION -  Name of physiographic section (see note below)
+
+PROVCODE - Numeric code for physiographic province. Values 1, 3-25.
+
+INFO file PHYSIO.PROVCODE contains numeric codes for provinces:
+
+PROVINCE                 PROVCODE
+------------------------ --------
+SUPERIOR UPLAND            1
+COASTAL PLAIN              3
+PIEDMONT                   4
+BLUE RIDGE                 5
+VALLEY AND RIDGE           6
+ST. LAWRENCE VALLEY        7
+APPALACHIAN PLATEAUS       8
+NEW ENGLAND                9
+ADIRONDACK                10
+INTERIOR LOW PLATEAUS     11
+CENTRAL LOWLAND           12
+GREAT PLAINS              13
+OZARK PLATEAUS            14
+OUACHITA                  15
+SOUTHERN ROCKY MOUNTAINS  16
+WYOMING BASIN             17
+MIDDLE ROCKY MOUNTAINS    18
+NORTHERN ROCKY MOUNTAINS  19
+COLUMBIA PLATEAU          20
+COLORADO PLATEAUS         21
+BASIN AND RANGE           22
+CASCADE-SIERRA MOUNTAINS  23
+PACIFIC BORDER            24
+LOWER CALIFORNIAN         25
+
+Because there are no defined physiographic section
+classifications for the Northern Rockies, Middle Rockies,
+Southern Rockies, Wyoming Basin, Superior Upland, Lower
+Californian and Adirondack Provinces, the SECTION field in the
+polygon attribute table is empty for these physiographic
+provinces.
+
+FEN-   DIVISION                 PROVINCE                  SECTION
+CODE
+1      LAURENTIAN UPLAND        SUPERIOR UPLAND           -
+3a     ATLANTIC PLAIN           COASTAL PLAIN             EMBAYED
+3b     ATLANTIC PLAIN           COASTAL PLAIN             SEA ISLAND
+3c     ATLANTIC PLAIN           COASTAL PLAIN             FLORIDIAN
+3d     ATLANTIC PLAIN           COASTAL PLAIN             EAST GULF COASTAL PLAIN
+3e     ATLANTIC PLAIN           COASTAL PLAIN             MISSISSIPPI ALLUVIAL PLAIN
+3f     ATLANTIC PLAIN           COASTAL PLAIN             WEST GULF COASTAL PLAIN
+4a     APPALACHIAN HIGHLANDS    PIEDMONT                  PIEDMONT UPLAND
+4b     APPALACHIAN HIGHLANDS    PIEDMONT                  PIEDMONT LOWLANDS
+5a     APPALACHIAN HIGHLANDS    BLUE RIDGE                NORTHERN
+5b     APPALACHIAN HIGHLANDS    BLUE RIDGE                SOUTHERN
+6a     APPALACHIAN HIGHLANDS    VALLEY AND RIDGE          TENNESSEE
+6b     APPALACHIAN HIGHLANDS    VALLEY AND RIDGE          MIDDLE
+6c     APPALACHIAN HIGHLANDS    VALLEY AND RIDGE          HUDSON VALLEY
+7a     APPALACHIAN HIGHLANDS    ST. LAWRENCE VALLEY       CHAMPLAIN
+8a     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      MOHAWK
+8b     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      CATSKILL
+8c     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      SOUTHERN NEW YORK
+8d     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      ALLEGHENY MOUNTAIN
+8e     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      KANAWHA
+8f     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      CUMBERLAND PLATEAU
+8g     APPALACHIAN HIGHLANDS    APPALACHIAN PLATEAUS      CUMBERLAND MOUNTAIN
+9a     APPALACHIAN HIGHLANDS    NEW ENGLAND               SEABOARD LOWLAND
+9b     APPALACHIAN HIGHLANDS    NEW ENGLAND               NEW ENGLAND UPLAND
+9c     APPALACHIAN HIGHLANDS    NEW ENGLAND               WHITE MOUNTAIN
+9d     APPALACHIAN HIGHLANDS    NEW ENGLAND               GREEN MOUNTAIN
+9e     APPALACHIAN HIGHLANDS    NEW ENGLAND               TACONIC
+10     APPALACHIAN HIGHLANDS    ADIRONDACK                -
+11a    INTERIOR PLAINS          INTERIOR LOW PLATEAUS     HIGHLAND RIM
+11b    INTERIOR PLAINS          INTERIOR LOW PLATEAUS     LEXINGTON PLAIN
+11c    INTERIOR PLAINS          INTERIOR LOW PLATEAUS     NASHVILLE BASIN
+12a    INTERIOR PLAINS          CENTRAL LOWLAND           EASTERN LAKE
+12b    INTERIOR PLAINS          CENTRAL LOWLAND           WESTERN LAKE
+12c    INTERIOR PLAINS          CENTRAL LOWLAND           WISCONSIN DRIFTLESS
+12d    INTERIOR PLAINS          CENTRAL LOWLAND           TILL PLAINS
+12e    INTERIOR PLAINS          CENTRAL LOWLAND           DISSECTED TILL PLAINS
+12f    INTERIOR PLAINS          CENTRAL LOWLAND           OSAGE PLAINS
+13k    INTERIOR PLAINS          GREAT PLAINS              CENTRAL TEXAS
+13a    INTERIOR PLAINS          GREAT PLAINS              MISSOURI PLATEAU, GLACIATED
+13b    INTERIOR PLAINS          GREAT PLAINS              MISSOURI PLATEAU, UNGLACIAT
+13c    INTERIOR PLAINS          GREAT PLAINS              BLACK HILLS
+13d    INTERIOR PLAINS          GREAT PLAINS              HIGH PLAINS
+13e    INTERIOR PLAINS          GREAT PLAINS              PLAINS BORDER
+13f    INTERIOR PLAINS          GREAT PLAINS              COLORADO PIEDMONT
+13g    INTERIOR PLAINS          GREAT PLAINS              RATON
+13h    INTERIOR PLAINS          GREAT PLAINS              PECOS VALLEY
+13i    INTERIOR PLAINS          GREAT PLAINS              EDWARDS PLATEAU
+14a    INTERIOR HIGHLANDS       OZARK PLATEAUS            SPRINGFIELD-SALEM PLATEAUS
+14b    INTERIOR HIGHLANDS       OZARK PLATEAUS            BOSTON "MOUNTAINS"
+15a    INTERIOR HIGHLANDS       OUACHITA                  ARKANSAS VALLEY
+15b    INTERIOR HIGHLANDS       OUACHITA                  OUACHITA MOUNTAINS
+16     ROCKY MOUNTAIN SYSTEM    SOUTHERN ROCKY MOUNTAINS  -
+17     ROCKY MOUNTAIN SYSTEM    WYOMING BASIN             -
+18     ROCKY MOUNTAIN SYSTEM    MIDDLE ROCKY MOUNTAINS    -
+19     ROCKY MOUNTAIN SYSTEM    NORTHERN ROCKY MOUNTAINS  -
+20a    INTERMONTANE PLATEAUS    COLUMBIA PLATEAU          WALLA WALLA PLATEAU
+20b    INTERMONTANE PLATEAUS    COLUMBIA PLATEAU          BLUE MOUNTAIN
+20c    INTERMONTANE PLATEAUS    COLUMBIA PLATEAU          PAYETTE
+20d    INTERMONTANE PLATEAUS    COLUMBIA PLATEAU          SNAKE RIVER PLAIN
+20e    INTERMONTANE PLATEAUS    COLUMBIA PLATEAU          HARNEY
+21a    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         HIGH PLATEAUS OF UTAH
+21b    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         UINTA BASIN
+21c    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         CANYON LANDS
+21d    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         NAVAJO
+21e    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         GRAND CANYON
+21f    INTERMONTANE PLATEAUS    COLORADO PLATEAUS         DATIL
+22a    INTERMONTANE PLATEAUS    BASIN AND RANGE           GREAT BASIN
+22b    INTERMONTANE PLATEAUS    BASIN AND RANGE           SONORAN DESERT
+22c    INTERMONTANE PLATEAUS    BASIN AND RANGE           SALTON TROUGH
+22d    INTERMONTANE PLATEAUS    BASIN AND RANGE           MEXICAN HIGHLAND
+22e    INTERMONTANE PLATEAUS    BASIN AND RANGE           SACRAMENTO
+23a    PACIFIC MOUNTAIN SYSTEM  CASCADE-SIERRA MOUNTAINS  NORTHERN CASCADE MOUNTAINS
+23b    PACIFIC MOUNTAIN SYSTEM  CASCADE-SIERRA MOUNTAINS  MIDDLE CASCADE MOUNTAINS
+23c    PACIFIC MOUNTAIN SYSTEM  CASCADE-SIERRA MOUNTAINS  SOUTHERN CASCADE MOUNTAINS
+23d    PACIFIC MOUNTAIN SYSTEM  CASCADE-SIERRA MOUNTAINS  SIERRA NEVADA
+24a    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            PUGET TROUGH
+24b    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            OLYMPIC MOUNTAINS
+24c    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            OREGON COAST RANGE
+24d    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            KLAMATH MOUNTAINS
+24e    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            CALIFORNIA TROUGH
+24f    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            CALIFORNIA COAST RANGES
+24g    PACIFIC MOUNTAIN SYSTEM  PACIFIC BORDER            LOS ANGELES RANGES
+25     PACIFIC MOUNTAIN SYSTEM  LOWER CALIFORNIAN         -</eaover>
+      <eadetcit>None.</eadetcit>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey</cntorg>
+          <cntper>GS ScienceBase</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>United States</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Although this data set has been used by the U.S. Geological
+Survey, U.S. Department of the Interior, no warranty expressed or
+implied is made by the U.S. Geological Survey as to the accuracy
+of the data and related materials. The act of distribution shall not 
+constitute any such warranty, and no responsibility is assumed by 
+the U.S. Geological Survey in the use of this data, software, or 
+related materials.
+
+Any use of trade, product, or firm names is for descriptive
+purposes only and does not imply endorsement by the U.S.
+Government.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>https://doi.org/10.5066/P9B1S3K8</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20201117</metd>
+    <metc>
+      <cntinfo>
+        <cntorgp>
+          <cntorg>U.S. Geological Survey</cntorg>
+          <cntper>Water Mission Area</cntper>
+        </cntorgp>
+        <cntaddr>
+          <addrtype>mailing</addrtype>
+          <address>12201 Sunrise Valley Dr</address>
+          <city>Reston</city>
+          <state>VA</state>
+          <postal>20192</postal>
+        </cntaddr>
+        <cntemail>GS-W-model-data@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>
