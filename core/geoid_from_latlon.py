@@ -7,9 +7,9 @@ def run(latitude, longitude):
     response = requests.get(url)
     geo_data = {}
     if response.status_code == 200:
-        data = response.json()
         # Process the JSON data
         try:
+            data = response.json()
             geographies = data['result']['geographies']
             geo_data["state_abrv"] = geographies["States"][0]["STUSAB"]
             geo_data["census_tract_geoid"] = geographies["Census Tracts"][0]["GEOID"]
