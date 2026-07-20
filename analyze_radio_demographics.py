@@ -8,8 +8,8 @@ import tqdm
 import time
 import opencellid_get_cell_location
 
-INPUT_FOLDER = "./data/split_demophysiographics_elevations//"
-OUTPUT_FOLDER = "./data/analysis/"
+INPUT_FOLDER = "./data/Nemo/demographics/"
+OUTPUT_FOLDER = "./data/Nemo/analysis/"
 DEMOGRAPHICS_COL = "population_density"
 OPEN_CELL_ID_DATA = "./data/opencellid/310.csv"
 RADIO_COL = "rsrp"
@@ -17,14 +17,6 @@ LOCATION_COL = "census_tract_geoid"
 DIST_THRESH = 0.1 # in km
 OPEN_CELL_ID_LAT_COL = 7 
 OPEN_CELL_ID_LON_COL = 6
-
-
-SOURCE_FILE_PATHs = ["/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/region_0_populations.csv", "/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/region_1_populations.csv"]
-OUTPUT_FOLDER = "/home/simran/Work/AERPAW/ExperimentData/Cross_Country/AERPAW-1/Demographics/"
-DEMOGRAPHICS_COL = "population"
-RADIO_COL = "rsrp"
-LOCATION_COL = "census_tract_geoid"
-DIST_THRESH = 0.1 # in km
 
 
 def calculate_num_handovers(cell_rows):
@@ -82,6 +74,8 @@ def lla_to_ecef(lla):
 
 def add_num_seen_cells(cell_rows):
     num_seen_cells = []
+    if "nemo_abs_time" in cell_rows.columns:
+        cell_rows["phone_abs_time"] = cell_rows["nemo_abs_time"]
     times = cell_rows["phone_abs_time"].unique()
     cell_rows["num_seen_cells"] = math.nan
     for unique_time in times:
@@ -92,7 +86,10 @@ def add_num_seen_cells(cell_rows):
         cell_rows.loc[cell_rows["phone_abs_time"] == unique_time, "num_seen_cells"] = num_unique_pcis
         
 def calculate_handover_intervals(cell_rows_original):
-    cell_rows = cell_rows_original[cell_rows_original["is_connected"] == 1]
+    if "is_connected" in cell_rows_original.columns:
+        cell_rows = cell_rows_original[cell_rows_original["is_connected"] == 1]
+    else:
+        cell_rows = cell_rows_original
     handover_interval_info = []
     num_rows = len(cell_rows)
     curr_dist_counter = 0
@@ -231,19 +228,35 @@ for source_file in tqdm.tqdm(sorted(os.listdir(INPUT_FOLDER))):
     source_file_path = os.path.join(INPUT_FOLDER, source_file)
     source_df = pd.read_csv(source_file_path)
     # handovers_per_dist = calculate_num_handovers_per_dist(source_df)
-    handover_info = calculate_handover_intervals(source_df)
-    add_num_seen_cells(source_df)
-    num_rows_with_ci, num_row_matches, num_matches, total, missing_cis, attached_rows = calculate_distance_to_cell_towers(source_df, open_cell_id_data)
-    found_cis += num_matches
-    total_rows += num_rows_with_ci
-    unique_cis += total
-    found_ci_rows += num_row_matches
-    cell_dist_attached_rows.extend(attached_rows)
-    missing_cis_all.extend(missing_cis)
-    radio_kpis_this_seg = source_df[source_df["is_connected"] == 1][["population_density", "rucc", "longitude", "latitude",  "elevation", "altitude", "phone_abs_time", "num_seen_cells", "rsrp", "rsrq", "rssi",  "physiographic_region_provcode", "physiographic_region_fencode", "cell_tower_distance"]]
-    merged_pd.extend(handover_info)
-    output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file)[0] + "_handovers_dist" + ".csv")
-    pd.DataFrame(handover_info).to_csv(output_path, index=False)
+    if "pci" in source_df.columns:
+        handover_info = calculate_handover_intervals(source_df)
+        merged_pd.extend(handover_info)
+        output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file)[0] + "_handovers_dist" + ".csv")
+        pd.DataFrame(handover_info).to_csv(output_path, index=False)
+        add_num_seen_cells(source_df)
+    if "is_connected" in source_df.columns:
+        source_df = source_df[source_df["is_connected"] == 1]
+    if "ci" in source_df.columns:
+        num_rows_with_ci, num_row_matches, num_matches, total, missing_cis, attached_rows = calculate_distance_to_cell_towers(source_df, open_cell_id_data)
+        found_cis += num_matches
+        total_rows += num_rows_with_ci
+        unique_cis += total
+        found_ci_rows += num_row_matches
+        cell_dist_attached_rows.extend(attached_rows)
+        missing_cis_all.extend(missing_cis)
+        radio_kpis_this_seg = source_df[["population_density", "rucc", "longitude", "latitude", "altitude", "phone_abs_time", "num_seen_cells", "rsrp", "rsrq", "rssi", "cell_tower_distance"]]
+    else:
+        cols_to_use = ["population_density", "rucc", "longitude", "latitude", "altitude", "rsrp", "rsrq"]
+        if "num_seen_cells" in source_df.columns:
+            cols_to_use.append("num_seen_cells")
+        if "phone_abs_time" in source_df.columns:
+            cols_to_use.append("phone_abs_time")
+        if "nemo_abs_time" in source_df.columns:
+            cols_to_use.append("nemo_abs_time")
+        
+        
+        radio_kpis_this_seg = source_df[cols_to_use]
+    
     radio_kpis_all = pd.concat([radio_kpis_all, radio_kpis_this_seg], ignore_index=True)
     output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file)[0] + "_radio_kpis" + ".csv")
     source_df.to_csv(output_path, index=False)
@@ -257,12 +270,12 @@ pd.DataFrame(missing_cis_all).to_csv(os.path.join(OUTPUT_FOLDER, "missing_locati
 pd.DataFrame(cell_dist_attached_rows).to_csv(os.path.join(OUTPUT_FOLDER, "cell_tower_distances.csv"), index=False)
 
 
-# KPI Analysis
-for source_file_path in SOURCE_FILE_PATHs:
-    source_df = pd.read_csv(source_file_path)
-    handovers_per_dist = calculate_num_handovers_per_dist(source_df)
-    output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file_path)[0] + "_handovers_per_dist_" + str(DIST_THRESH) + "_km" + ".csv")
-    pd.DataFrame(handovers_per_dist).to_csv(output_path, index=False)
+# # KPI Analysis
+# for source_file_path in SOURCE_FILE_PATHs:
+#     source_df = pd.read_csv(source_file_path)
+#     handovers_per_dist = calculate_num_handovers_per_dist(source_df)
+#     output_path = os.path.join(OUTPUT_FOLDER, os.path.splitext(source_file_path)[0] + "_handovers_per_dist_" + str(DIST_THRESH) + "_km" + ".csv")
+#     pd.DataFrame(handovers_per_dist).to_csv(output_path, index=False)
 
 
 

@@ -102,18 +102,6 @@ def run():
 
     pawprints_pd.to_csv(PAWPRINTS_OUTPUT_PATH, index=False)
 
-ORIGINAL_FOLDER = "C:\\Users\\ssingh28\\RadioDemographics\\data\\PawPrints_2\\original\\"
+ORIGINAL_FOLDER = "C:\\Users\\ssingh28\\RadioDemographics\\data\\PawPrints_2\\geoids\\"
 GEOIDS_FOLDER   = "C:\\Users\\ssingh28\\RadioDemographics\\data\\PawPrints_2\\geoids\\"
 
-FILES = [
-    "aug_18_2024b_merged.csv",
-    "aug_20_2024_merged.csv",
-    "aug_21_2024_merged.csv",
-    "aug_26_2024_merged.csv",
-]
-
-for file in FILES:
-    stem = Path(file).stem
-    PAWPRINTS_SOURCE_PATH = ORIGINAL_FOLDER + file
-    PAWPRINTS_OUTPUT_PATH = GEOIDS_FOLDER + stem + "_demographics.csv"
-    run()

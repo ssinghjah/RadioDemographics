@@ -9,11 +9,10 @@ from core import geoid_from_latlon
 import censusgeocode as cg
 
 parser = argparse.ArgumentParser(description = "Add latest demographic info are added from US census database.")
-INPUT_FOLDER = "./data/split_geoids"
-OUTPUT_FOLDER = "./data/split_demographics"
+INPUT_FOLDER = "./data/PawPrints_1/geoids/"
+OUTPUT_FOLDER = "./data/PawPrints_1/demographics/"
 
-
-DEMOGRAPHICS_SOURCE = "/home/simran/Work/AERPAW/ExperimentData/Cross_Country/PolicyMap/States/"
+DEMOGRAPHICS_SOURCE = "./data/PolicyMap/States/"
 RUCC_SOURCE = "./data/RUCC/rucc.csv"
 COUNTY_FIPS_SOURCE = "./data/FIPS/fips.csv"
 DEMOGRAPHICS_KPI_COL = "rpopden"
@@ -31,13 +30,6 @@ def _county_to_fips(county_name, fips_map):
 
 parser = argparse.ArgumentParser(description = "Adds county, census tract, and census block geo ids to each log row, using which latest demographic info are added from US census database.")
 
-PAWPRINTS_ROOT_FOLDER = "/home/ubuntu/pawprints-processing/data/split_interpolated/"
-PAWPRINTS_OUTPUT_FOLDER = "~/pawprints-processing/data/split_geoids/"
-
-parser = argparse.ArgumentParser(description = "Adds county, census tract, and census block geo ids to each log row, using which latest demographic info are added from US census database.")
-
-PAWPRINTS_ROOT_FOLDER = "/home/ubuntu/RadioDemographics/data/split/"
-PAWPRINTS_OUTPUT_FOLDER = "~/RadioDemographics/data/split_geoids/"
 SLEEP = 0.2
 
 def process_file(input_path, output_path):
@@ -80,17 +72,6 @@ def process_file(input_path, output_path):
         pawprints_pd.to_csv(output_path, index=False)
 
 
-START = 0
-END = 79
-PREFIX = "aerpaw-1_cellular_interpolated_seg_"
-for i in range(START, END + 1):
-    if i % 4 != 0:
-        continue
-    print(i)
-    input_file_path = os.path.join(PAWPRINTS_ROOT_FOLDER, PREFIX + str(i) + ".csv")
-    output_path = os.path.join(PAWPRINTS_OUTPUT_FOLDER, PREFIX + str(i) + "_geoids.csv")
-    process_file(input_file_path, output_path)
-
 
 def _rucc_from_fips(fips, rucc_pd):
     rucc = -1
@@ -99,9 +80,6 @@ def _rucc_from_fips(fips, rucc_pd):
         rucc = matching_rows[matching_rows["Attribute"] == "RUCC_2023"]["Value"].iloc[0]
     return rucc
     
-
-def _add_rucc():
-    pass
 
 
 def run(input_file_path, output_file_path, all_state_demo_pds, fips_map, rucc_pd):
@@ -170,16 +148,16 @@ print("Total rows = " + str(total_rows))
 print("Rows processed = ", total_processed, ", not processed = ", total_skipped)
 print("Missing FIPS: " + str(MISSING_FIPS))
 
-START = 1
-END = 79
-OFFSET = 4
-PREFIX = "aerpaw-1_cellular_interpolated_seg_"
-current_seg = START
-while current_seg <= END:
-    print("Segment:" + str(current_seg))
-    input_file_path = os.path.join(PAWPRINTS_ROOT_FOLDER, PREFIX + str(current_seg) + ".csv")
-    output_path = os.path.join(PAWPRINTS_OUTPUT_FOLDER, PREFIX + str(current_seg) + "_geoids.csv")
-    process_file(input_file_path, output_path)
-    current_seg += OFFSET
+# START = 1
+# END = 79
+# OFFSET = 4
+# PREFIX = "aerpaw-1_cellular_interpolated_seg_"
+# current_seg = START
+# while current_seg <= END:
+#     print("Segment:" + str(current_seg))
+#     input_file_path = os.path.join(PAWPRINTS_ROOT_FOLDER, PREFIX + str(current_seg) + ".csv")
+#     output_path = os.path.join(PAWPRINTS_OUTPUT_FOLDER, PREFIX + str(current_seg) + "_geoids.csv")
+#     process_file(input_file_path, output_path)
+#     current_seg += OFFSET
 
 
